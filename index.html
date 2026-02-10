@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech & Color Portfolio</title>
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple-Blue */
+            --accent-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); /* Pink-Peach */
+            --code-bg: #f4f6f8;
+            --text-dark: #2d3748;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- COLORFUL HEADER --- */
+        header {
+            background: white;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Courier New', monospace; /* Engineering Font */
+            font-weight: 900;
+            font-size: 1.6rem;
+            background: -webkit-linear-gradient(#667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #764ba2;
+        }
+
+        /* --- HERO SECTION WITH SHAPES --- */
+        .hero {
+            position: relative;
+            height: 90vh; /* Full screen height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        /* Decorative Background Blob */
+        .blob {
+            position: absolute;
+            background: var(--accent-gradient);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 1;
+            animation: moveBlob 10s infinite alternate;
+        }
+
+        @keyframes moveBlob {
+            0% { transform: translate(-100px, -100px); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        .hero-content {
+            z-index: 2; /* Sits on top of the blob */
+        }
+
+        .code-badge {
+            background: var(--code-bg);
+            color: #764ba2;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #718096;
+            margin-bottom: 40px;
+        }
+
+        /* Gradient Button */
+        .btn-grad {
+            background-image: var(--primary-gradient);
+            padding: 15px 40px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 20px #eee;
+            border-radius: 50px;
+            display: block;
+            text-decoration: none;
+            font-weight: bold;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .btn-grad:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* --- TECH STACK GRID --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2d3748;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Colorful Cards */
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Card Icons (CSS Shapes) */
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        /* Specific Colors for Cards */
+        .c1 .icon-box { background: linear-gradient(45deg, #ff9a9e, #fad0c4); }
+        .c2 .icon-box { background: linear-gradient(45deg, #a18cd1, #fbc2eb); }
+        .c3 .icon-box { background: linear-gradient(45deg, #84fab0, #8fd3f4); }
+
+        .card h3 { margin-bottom: 10px; font-size: 1.5rem; }
+        .card p { color: #718096; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #fafafa;
+            text-align: center;
+            padding: 40px;
+            color: #718096;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">&lt;Dev/&gt;</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Work</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="blob"></div> <div class="hero-content">
+            <span class="code-badge">System.out.println("Hello World");</span>
+            
+            <h1>Design.<br>Code.<br>Deploy.</h1>
+            <p>I build things for the web using modern tech.</p>
+            
+            <a href="#" class="btn-grad">View My Github</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">My Tech Stack</h2>
+        <div class="grid">
+            
+            <div class="card c1">
+                <div class="icon-box">JS</div>
+                <h3>Frontend Logic</h3>
+                <p>Creating interactive UIs with React, Vue, and vanilla JavaScript.</p>
+            </div>
+
+            <div class="card c2">
+                <div class="icon-box">DB</div>
+                <h3>Backend Systems</h3>
+                <p>Managing data with SQL, NoSQL, and robust API architectures.</p>
+            </div>
+
+            <div class="card c3">
+                <div class="icon-box">CL</div>
+                <h3>Cloud & DevOps</h3>
+                <p>Deploying on AWS, managing CI/CD pipelines, and server management.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Built with ❤️ and ☕ by a Ritesh Bhaskar</p>
+    </footer>
+
+</body>
+</html>
